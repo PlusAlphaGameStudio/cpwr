@@ -51,7 +51,7 @@ func main() {
 			log.Print("    -> " + newPath)
 
 			newBasePath, _ := filepath.Split(newPath)
-			err := os.MkdirAll(newBasePath, os.ModeDir | 0755)
+			err := os.MkdirAll(newBasePath, os.ModeDir | 0644)
 			if err != nil && os.IsExist(err) == false {
 				panic(err)
 			}
@@ -63,7 +63,7 @@ func main() {
 
 			newFileContent := strings.ReplaceAll(string(fileContent), dirName, newDirName)
 
-			err = os.WriteFile(newPath, []byte(newFileContent), 0755)
+			err = os.WriteFile(newPath, []byte(newFileContent), 0644)
 			if err != nil {
 				panic(err)
 			}
